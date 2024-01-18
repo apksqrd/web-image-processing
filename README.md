@@ -12,3 +12,5 @@ A [rust videocall web app](https://github.com/security-union/videocall-rs/blob/1
 Working  with the camera stuff seems like too big a jump from doing the tutorial, so I am going to just experiment right now.
 
 I am going to test if yew-router works in github pages. For now, I need to test by manually inputting the page names.
+
+Github Pages works differently than trunk serve, so it turns out routers need hacks to work. From <https://github.com/orgs/community/discussions/64096>, it turns out I can either use hash router instead of browser router, or I could do something with the 404.html.
