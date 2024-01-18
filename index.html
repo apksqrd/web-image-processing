@@ -2,6 +2,20 @@
 <html lang="en">
 
 <head>
+    <style>
+        /* Darkmode from https://css-tricks.com/dark-modes-with-css/ */
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        @media screen and (prefers-color-scheme: light) {
+            body {
+                background-color: white;
+                color: black;
+            }
+        }
+    </style>
     <base data-trunk-public-url />
 </head>
 
