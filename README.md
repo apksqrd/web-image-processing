@@ -5,6 +5,7 @@ Started with <https://yew.rs/docs/tutorial>
 This works on my computer with `trunk serve --open`.
 
 For help with deployment on github pages, <https://www.youtube.com/watch?v=Grk4_tbBCsc> was the best resource.
+Run `trunk build --release --public-url web-image-processing/` to build correctly.
 
 A [rust videocall web app](https://github.com/security-union/videocall-rs/blob/115152b03038ed1764464fe82433cb618a6e110a/yew-ui/src/components/host.rs#L92-L110) was a good example for getting camera input.
 

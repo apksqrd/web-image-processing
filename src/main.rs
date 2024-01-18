@@ -17,6 +17,10 @@ enum Route {
     Additional,
     #[at("/additional/*path")]
     AdditionalPathedA { path: String },
+    #[at("/web-image-processing")]
+    AlternativeHome,
+    #[at("/web-image-processing/sub")]
+    AlternativeSubpage,
     #[not_found]
     #[at("/404")]
     NotFound,
@@ -31,6 +35,8 @@ fn switch(routes: Route) -> Html {
         Route::AdditionalPathedA { path } => {
             html! { <> {"Additional A"} <br/> {"Path: "} {path} </> }
         }
+        Route::AlternativeHome => html! { <h1>{ "Alternative Home" }</h1> },
+        Route::AlternativeSubpage => html! { <h1>{ "Alternative Subpage" }</h1> },
         Route::NotFound => html! { <h1>{ "404" }</h1> },
     }
 }
