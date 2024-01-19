@@ -8,6 +8,7 @@ For help with deployment on github pages, <https://www.youtube.com/watch?v=Grk4_
 Run `trunk build --release --public-url web-image-processing/` to build correctly.
 
 A [rust videocall web app](https://github.com/security-union/videocall-rs/blob/115152b03038ed1764464fe82433cb618a6e110a/yew-ui/src/components/host.rs#L92-L110) was a good example for getting camera input.
+<https://www.youtube.com/watch?v=Z6fQtNpB3hU> showed how to do it on JS.
 
 Working  with the camera stuff seems like too big a jump from doing the tutorial, so I am going to just experiment right now.
 
@@ -17,3 +18,5 @@ Github Pages works differently than trunk serve, so it turns out routers need ha
 
 I figured out my own hack: just make the 404.html a copy of the index.
 I made a script to automate it and can be used with `./build.sh` and you might need to do `chmod +x build.sh`.
+
+I got the camera working and it turns out the big problem was me not understanding futures/promises rather than the camera or the displaying.

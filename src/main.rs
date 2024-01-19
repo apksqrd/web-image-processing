@@ -1,3 +1,4 @@
+mod camera_demo;
 mod clickable_demo;
 mod routes_demo;
 
@@ -13,14 +14,8 @@ enum Route {
     ClickableDemo,
     #[at("/routes")]
     RoutesDemo,
-    #[at("/additional")]
-    Additional,
-    #[at("/additional/*path")]
-    AdditionalPathedA { path: String },
-    #[at("/web-image-processing")]
-    AlternativeHome,
-    #[at("/web-image-processing/sub")]
-    AlternativeSubpage,
+    #[at("/camera")]
+    CameraDemo,
     #[not_found]
     #[at("/404")]
     NotFound,
@@ -31,12 +26,7 @@ fn switch(routes: Route) -> Html {
         Route::Home => html! { <h1>{ "Home" }</h1> },
         Route::ClickableDemo => html! { <clickable_demo::App/> },
         Route::RoutesDemo => html! { <routes_demo::App/> },
-        Route::Additional => html! { "Just Additional" },
-        Route::AdditionalPathedA { path } => {
-            html! { <> {"Additional A"} <br/> {"Path: "} {path} </> }
-        }
-        Route::AlternativeHome => html! { <h1>{ "Alternative Home" }</h1> },
-        Route::AlternativeSubpage => html! { <h1>{ "Alternative Subpage" }</h1> },
+        Route::CameraDemo => html! { <camera_demo::App/> },
         Route::NotFound => html! { <h1>{ "404" }</h1> },
     }
 }
@@ -44,14 +34,11 @@ fn switch(routes: Route) -> Html {
 #[function_component(Main)]
 fn app() -> Html {
     html! {
-        <>
-            <p> {"hi"} </p>
-            <BrowserRouter>
-                <p> {"hello"} </p>
+        <BrowserRouter>
+            <p> {"hello"} </p>
 
-                <Switch<Route> render={switch} /> // <- must be child of <BrowserRouter>
-            </BrowserRouter>
-        </>
+            <Switch<Route> render={switch} />
+        </BrowserRouter>
     }
 }
 
