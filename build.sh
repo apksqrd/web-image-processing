@@ -1,4 +1,4 @@
-# THis is with the 404 hack from https://github.com/rafgraph/spa-github-pages
+trunk build --release --public-url web-image-processing/
 
-# trunk build --release --public-url web-image-processing/
-# cp 404.html docs
+# I found my own hack by replacing 404.html with the index, it is single page based anyways
+cp docs/index.html docs/404.html

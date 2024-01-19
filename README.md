@@ -14,3 +14,6 @@ Working  with the camera stuff seems like too big a jump from doing the tutorial
 I am going to test if yew-router works in github pages. For now, I need to test by manually inputting the page names.
 
 Github Pages works differently than trunk serve, so it turns out routers need hacks to work. From <https://github.com/orgs/community/discussions/64096>, it turns out I can either use hash router instead of browser router, or I could do something with the 404.html.
+
+I figured out my own hack: just make the 404.html a copy of the index.
+I made a script to automate it and can be used with `./build.sh` and you might need to do `chmod +x build.sh`.
