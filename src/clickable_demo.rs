@@ -35,7 +35,3 @@ pub fn app() -> Html {
         </Clickable>
     }
 }
-
-pub fn render() {
-    yew::Renderer::<App>::new().render();
-}

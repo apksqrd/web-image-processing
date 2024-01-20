@@ -1,7 +1,7 @@
 use gloo_console::log;
 use wasm_bindgen::{closure::Closure, JsCast, JsValue};
-use web_sys::{HtmlVideoElement, MediaStream, MediaStreamConstraints, Node};
-use yew::{prelude::*, Renderer};
+use web_sys::{HtmlVideoElement, MediaStream, MediaStreamConstraints};
+use yew::prelude::*;
 
 fn get_camera_permission() {
     wasm_bindgen_futures::spawn_local(async {
