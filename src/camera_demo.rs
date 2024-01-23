@@ -5,22 +5,17 @@ use yew::prelude::*;
 
 fn get_camera_permission() {
     wasm_bindgen_futures::spawn_local(async {
-        log!("point D");
         let navigator = web_sys::window().unwrap().navigator();
 
-        log!("point C");
         let mut constraints = MediaStreamConstraints::new();
-        log!("point B");
         log!(&constraints);
         constraints.video(&JsValue::TRUE);
-        log!("point A");
         let promise = navigator
             .media_devices()
             .unwrap()
             .get_user_media_with_constraints(&constraints)
             .unwrap();
 
-        log!("point E");
         let resolve = Closure::wrap(Box::from(|signal: JsValue| {
             log!("Working");
 
@@ -37,12 +32,9 @@ fn get_camera_permission() {
             log!("error: ", error);
         }) as Box<dyn FnMut(JsValue)>);
 
-        log!("point F");
         let promise = promise.then2(&resolve, &reject);
 
         wasm_bindgen_futures::JsFuture::from(promise).await.unwrap();
-
-        log!("point G");
     });
 }
 
@@ -54,6 +46,5 @@ pub fn app() -> Html {
 
     get_camera_permission();
 
-    log!("point H");
     app
 }

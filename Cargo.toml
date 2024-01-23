@@ -11,6 +11,7 @@ yew-router = { git = "https://github.com/yewstack/yew.git" }
 wasm-bindgen = "0.2"
 wasm-bindgen-futures = "0.4"
 gloo-console = "0.3"
+lipsum = "0.9"
 
 [dependencies.web-sys]
 version = "0.3"

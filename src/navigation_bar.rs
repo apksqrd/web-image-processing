@@ -5,9 +5,15 @@ use yew::prelude::*;
 use yew_router::hooks::use_navigator;
 
 #[derive(PartialEq, Debug)]
+pub enum Destination {
+    Routed(Route),
+    Link(String), // prefered
+}
+
+#[derive(PartialEq, Debug)]
 pub struct NavigationItem {
     display_name: String,
-    destination_route: Route,
+    destination: Destination,
 }
 
 #[function_component]
@@ -16,15 +22,19 @@ pub fn NavigationBar() -> Html {
     let navigation_items = vec![
         NavigationItem {
             display_name: "Home".to_string(),
-            destination_route: Route::Home,
+            destination: Destination::Link("/".to_string()),
         },
         NavigationItem {
             display_name: "Clickable Demo".to_string(),
-            destination_route: Route::ClickableDemo,
+            destination: Destination::Link("/clickable".to_string()),
         },
         NavigationItem {
             display_name: "Camera Demo".to_string(),
-            destination_route: Route::CameraDemo,
+            destination: Destination::Link("/camera".to_string()),
+        },
+        NavigationItem {
+            display_name: "Long Demo".to_string(),
+            destination: Destination::Link("/long".to_string()),
         },
     ];
 
@@ -35,16 +45,25 @@ pub fn NavigationBar() -> Html {
         .map(
             |NavigationItem {
                  display_name,
-                 destination_route,
+                 destination,
              }| {
-                // this line works... for some reason
-                let navigator = navigator.clone();
-                let destination_route = destination_route.clone();
+                let destination = destination.clone();
 
-                let onclick: Callback<MouseEvent> =
-                    Callback::from(move |_| navigator.clone().push(&destination_route.clone()));
+                match destination {
+                    Destination::Routed(route) => {
+                        // this line works... for some reason
+                        let route = route.clone();
+                        let navigator = navigator.clone();
 
-                html! { <li onclick={onclick}> {display_name} </li> }
+                        let onclick: Callback<MouseEvent> =
+                            Callback::from(move |_| navigator.clone().push(&route.clone()));
+
+                        html! { <li onclick={onclick}> <a> {display_name} </a> </li> }
+                    }
+                    Destination::Link(link) => {
+                        html! { <li> <a href={link.clone()}> {display_name} </a> </li> }
+                    }
+                }
             },
         )
         .collect::<Html>();
