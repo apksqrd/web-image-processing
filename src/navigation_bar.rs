@@ -22,19 +22,19 @@ pub fn NavigationBar() -> Html {
     let navigation_items = vec![
         NavigationItem {
             display_name: "Home".to_string(),
-            destination: Destination::Link("/".to_string()),
+            destination: Destination::Link("/web-image-processing".to_string()),
         },
         NavigationItem {
             display_name: "Clickable Demo".to_string(),
-            destination: Destination::Link("/clickable".to_string()),
+            destination: Destination::Link("/web-image-processing/clickable".to_string()),
         },
         NavigationItem {
             display_name: "Camera Demo".to_string(),
-            destination: Destination::Link("/camera".to_string()),
+            destination: Destination::Link("/web-image-processing/camera".to_string()),
         },
         NavigationItem {
             display_name: "Long Demo".to_string(),
-            destination: Destination::Link("/long".to_string()),
+            destination: Destination::Link("/web-image-processing/long".to_string()),
         },
     ];
 
