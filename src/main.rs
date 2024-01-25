@@ -1,9 +1,5 @@
-mod camera_demo;
-mod clickable_demo;
-mod long_demo;
 mod navigation_bar;
-mod routes_demo;
-
+mod pages;
 use yew::prelude::*;
 use yew::*;
 use yew_router::prelude::*;
@@ -26,9 +22,9 @@ pub enum Route {
 fn switch(routes: Route) -> Html {
     match routes {
         Route::Home => html! { <h1>{ "Home" }</h1> },
-        Route::ClickableDemo => html! { <clickable_demo::App/> },
-        Route::CameraDemo => html! { <camera_demo::App/> },
-        Route::LongDemo => html! { <long_demo::App/> },
+        Route::ClickableDemo => html! { <pages::clickable_demo::App/> },
+        Route::CameraDemo => html! { <pages::camera_demo::App/> },
+        Route::LongDemo => html! { <pages::long_demo::App/> },
         Route::NotFound => html! { <h1>{ "404" }</h1> },
     }
 }
